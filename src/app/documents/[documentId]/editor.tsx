@@ -1,13 +1,22 @@
 'use client'
 
-import { TaskItem, TaskList} from '@tiptap/extension-list'
-import { TableKit } from '@tiptap/extension-table'
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
+import Table from '@tiptap/extension-table'
+import Underline from '@tiptap/extension-underline'
+import TableRow from '@tiptap/extension-table-row'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import { useStorage } from '@liveblocks/react/suspense'
 import TextAlign from '@tiptap/extension-text-align'
 import Highlight from "@tiptap/extension-highlight"
-import {FontFamily , TextStyle, Color, FontSize, LineHeight} from "@tiptap/extension-text-style"
+import TextStyle from "@tiptap/extension-text-style"
+import Color from "@tiptap/extension-color"
+import { FontSize } from "@/extensions/font-size"
+import { FontFamily } from "@/extensions/font-family"
+import { LineHeight } from "@/extensions/line-height"
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { useEditorStore } from '@/store/use-editor-store';
@@ -63,6 +72,7 @@ export const Editor = ({initialContent}:EditorProps) => {
     extensions: [
       liveblocks as unknown as AnyExtension,
       StarterKit,
+      Underline,
       LineHeight,
       FontSize,
       TextAlign.configure({
@@ -73,14 +83,19 @@ export const Editor = ({initialContent}:EditorProps) => {
        autolink: true,
        defaultProtocol:'https'
       }),
+      TextStyle,
       Color,
       Highlight.configure({multicolor: true}),
       FontFamily,
-      TextStyle,
+      LineHeight,
       Image,
-      TableKit.configure({
-        table:{resizable: true},
-      }),
+      Table.configure({
+  resizable: true,
+}),
+TableRow,
+TableHeader,
+TableCell,
+
       TaskItem.configure({
       nested: true,
     }), TaskList],

@@ -10,18 +10,34 @@ export async function getDocuments(ids: Id<"documents">[]){
     return await convex.query(api.documents.getByIds, {ids})
 };
 
-export async function getUsers(){
-    const {sessionClaims} = await auth();
-    const clerk = await clerkClient();
+export async function getUsers() {
+  const { sessionClaims } = await auth();
+  const clerk = await clerkClient();
 
-    const response = await clerk.users.getUserList({
-       organizationId: [sessionClaims?.org_id as string],
-    });
+  const response = await clerk.users.getUserList({
+    organizationId: [sessionClaims?.org_id as string],
+  });
 
-    const users = response.data.map((user)=>({
-        id:user.id,
-        name: user.firstName ?? user.primaryEmailAddress?.emailAddress ?? "Anonymous",
-        avatar: user.imageUrl,
-    }));
-    return users;
+  const users = response.data.map((user) => {
+    const name =
+      user.firstName ??
+      user.primaryEmailAddress?.emailAddress ??
+      "Anonymous";
+
+    const nameToNumber = name
+      .split("")
+      .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+
+    const hue = Math.abs(nameToNumber) % 360;
+    const color = `hsl(${hue}, 80%, 60%)`;
+
+    return {
+      id: user.id,
+      name,
+      avatar: user.imageUrl,
+      color,
+    };
+  });
+
+  return users;
 }
