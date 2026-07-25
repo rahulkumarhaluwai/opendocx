@@ -1,4 +1,4 @@
-# Google Docs Clone
+# openDocx
 
 A high-performance, real-time collaborative document editor inspired by Google Docs, built with **Next.js 15** and modern full-stack technologies.
 
@@ -74,22 +74,6 @@ Built with **Tailwind CSS** and **Shadcn UI** to provide a clean, modern, and re
 ### 🐳 Dockerized
 
 The application is containerized using **Docker**, making it easier to create a consistent and portable environment for development and deployment.
-
----
-
-## 🛠️ Tech Stack
-
-| Technology       | Purpose                                    |
-| ---------------- | ------------------------------------------ |
-| **Next.js 15**   | Full-stack React framework                 |
-| **TypeScript**   | Type-safe application development          |
-| **Tailwind CSS** | Utility-first styling                      |
-| **Shadcn UI**    | Reusable and accessible UI components      |
-| **Convex**       | Reactive backend and real-time database    |
-| **Clerk**        | Authentication and organization management |
-| **TipTap**       | Rich text editor                           |
-| **Liveblocks**   | Real-time collaboration and presence       |
-| **Docker**       | Application containerization               |
 
 ---
 
