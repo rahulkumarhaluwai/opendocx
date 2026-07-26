@@ -58,7 +58,7 @@ export const Ruler=()=>{
     };
     return(
         <div
-        ref={rulerRef} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} className="w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end relative select-none print:hidden">
+        ref={rulerRef} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} className="w-204 mx-auto h-6 border-b border-gray-300 flex items-end relative select-none print:hidden">
             <div id="ruler-container" className="w-full h-full relative">
               <Marker position={leftMargin} isLeft={true} isDragging={isDraggingLeft} onMouseDown={handleLeftMouseDown} onDoubleClick={handleLeftDoubleClick}/>
               <Marker position={rightMargin} isLeft={false} isDragging={isDraggingRight} onMouseDown={handleRightMouseDown} onDoubleClick={handleRightDoubleClick}/>
@@ -70,17 +70,17 @@ export const Ruler=()=>{
                         <div key={marker} className="absolute bottom-0" style={{left:`${position}px`}}>
                            {marker % 10 === 0 && (
                             <>
-                            <div className="absolute bottom-0 w-[1px] h-2 bg-neutral-500"/>
+                            <div className="absolute bottom-0 w-px h-2 bg-neutral-500"/>
                             <span className="absolute bottom-2 text-[10px] text-neutral-500 transform -translate-x-1/2">
                                 {marker/10 + 1}
                             </span>
                             </>
                            )}
                            {marker % 5 === 0 && marker % 10 !== 0 && (
-                            <div className="absolute bottom-0 w-[1px] h-1.5 bg-neutral-500"/>
+                            <div className="absolute bottom-0 w-px h-1.5 bg-neutral-500"/>
                            )}
                            {marker % 5 !== 0 &&(
-                            <div className="absolute bottom-0 w-[1px] h-1 bg-neutral-500"/>
+                            <div className="absolute bottom-0 w-px h-1 bg-neutral-500"/>
                            )}
                         </div>
                     )
@@ -108,7 +108,7 @@ const Marker = ({
     onDoubleClick
 }: MarkerProps)=>{
     return(
-  <div className="absolute top-0 w-4 h-full cursor-ew-resize z-[5] group -ml-2"
+  <div className="absolute top-0 w-4 h-full cursor-ew-resize z-5 group -ml-2"
   style={{[isLeft? "left": "right"]: `${position}px`}}
   onMouseDown={onMouseDown} onDoubleClick={onDoubleClick}>
    <FaCaretDown className="absolute left-1/2 top-0 h-full fill-blue-500 transform -translate-x-1/5"/>

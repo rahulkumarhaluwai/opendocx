@@ -408,7 +408,7 @@ const FontFamilyButton =()=>{
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <button className="h-7 w-[120px] shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm">
+                <button className="h-7 w-30 shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm">
                  <span className="truncate">
                    {editor?.getAttributes("textStyle").fontFamily || "Arial"}
                  </span>
@@ -522,7 +522,7 @@ export const Toolbar =()=>{
         ]
     ];
     return (
-        <div className="bg-[#F1F4F9] px-2.5 py-0.5 rounded-[24px] min-h-[40px]
+        <div className="bg-[#F1F4F9] px-2.5 py-0.5 rounded-3xl min-h-10
         flex items-center gap-x-0.5 overflow-x-auto">
             {sections[0].map((item)=>(
                 <ToolbarButton key={item.label} {...item}/>
